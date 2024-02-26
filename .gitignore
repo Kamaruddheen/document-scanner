@@ -10,3 +10,8 @@
 excel.xlsx
 # Database
 db.sqlite3
+# Exclude redundant files/folders
+sample*.py
+Sample Files.zip
+temp
+demo
