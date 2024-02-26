@@ -1,0 +1,12 @@
+# Python bytecode files can be omitted
+*.pyc
+# virtual environment
+.venv
+# Vscode custom settings
+.vscode
+# environment variables
+.env
+# PDF Output
+excel.xlsx
+# Database
+db.sqlite3
