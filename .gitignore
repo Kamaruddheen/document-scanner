@@ -6,6 +6,8 @@
 .vscode
 # environment variables
 .env
+# Link a directory to a Vercel project
+.vercel
 # PDF Output
 excel.xlsx
 # Database
