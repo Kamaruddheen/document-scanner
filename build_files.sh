@@ -1,3 +1,6 @@
+# Checking python version
+python --version
+
 # build_files.sh
 pip install -r requirements.txt
 
