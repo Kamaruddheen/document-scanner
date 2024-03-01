@@ -4,11 +4,23 @@ from data_extraction import dataextractor
 
 
 def homepage(request):
+    result = "failed"
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             input_file = request.FILES['input_file']
-            print("Results : ", dataextractor.execute("Invoice", input_file))
+            result = dataextractor.execute("Invoice", input_file)
+            print("Results : Successful")
+
+        context = {
+        'form': form, 
+        'result': result
+        }
     else:
         form = FileUploadForm()
-    return render(request, 'index.html', {'form': form})
+
+        context = {
+        'form': form
+        }
+    
+    return render(request, 'index.html', context)

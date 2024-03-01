@@ -78,7 +78,7 @@ def find_text_with_ocr(image, x, y, xw, yh):
     for i, item in enumerate(ocr_result):        
         results.append(item)
 
-    return results
+    return results, ocr_result
 
 
 # Save structured text in Excel file
@@ -108,12 +108,14 @@ def execute(title, input_file):
     (x, y, xw, yh) = find_contours(image)
 
     # Extract text using OCR
-    image_to_text = find_text_with_ocr(image, x, y, xw, yh)
-    
-    # Save to Excel
-    create_excel(image_to_text)
+    image_to_text = find_text_with_ocr(image, x, y, xw, yh)    
+    array, text = image_to_text
 
-    return "Successful"
+    # Save to Excel
+    create_excel(array)
+
+    return text
+    # return "Successful"
 
 
 # plt_imshow("Input", image)
