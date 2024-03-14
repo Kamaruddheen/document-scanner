@@ -21,9 +21,37 @@
         <title>PDF Extraction</title>
     </head>
     <body class="vh-100">
+        <div class="loader-container" id="loader">
+            <div class="terminal-loader">
+                <div class="terminal-header">
+                    <div class="terminal-title">Status</div>
+                    <div class="terminal-controls">
+                        <div class="control close"></div>
+                        <div class="control minimize"></div>
+                        <div class="control maximize"></div>
+                    </div>
+                </div>
+                <div class="text">Processing...</div>
+            </div>
+        </div>
         <main class="py-6 py-md-7 text-white">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                <section class="file-container" id="file_container">
+                    <div class="file-name" id="file_name">
+                        <div class="file-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
+                                <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2m5.5 1.5v2a1 1 0 0 0 1 1h2z" />
+                            </svg>
+                        </div>
+                        <span class="file" id="file"></span>
+                        <button type="button" class="remove-button" onclick="remove()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="red" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </button>
+                    </div>
+                </section>
                 <label class="file-upload" for="id_input_file">
                     <div class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24">
@@ -44,16 +72,13 @@
                     </div>
                     {{ form.input_file }}
                 </label>
-                <button class="submit-button" type="submit">Text Conversion</button>
+                <button class="submit-button" type="submit" onclick="loader()">Text Conversion</button>
                 <!-- Output -->
-                <div class="file_name" id="file_name">
-                    <!-- TODO: File name, icon and remove button  -->
-                    sample1.pdf
-                </div>
                 {% if result == 'failed' %}
                 <p class="re-upload">Something went wrong, Please re-upload the file.</p>
                 {% elif result %}
-                <div class="result">
+                <div class="result" id="result">
+                    <!-- Copy Text -->
                     <div>
                         <button type="button" class="copy-text" onclick="copy_text()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="pointer-events-none">
@@ -61,7 +86,6 @@
                                 <rect x="4" y="8" width="12" height="12" rx="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></rect>
                                 <path d="M8 6V5C8 4.44772 8.44772 4 9 4H19C19.5523 4 20 4.44772 20 5V15C20 15.5523 19.5523 16 19 16H18" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2"></path>
                             </svg>
-                            <!-- Copy Text -->
                         </button>
                     </div>
                     <p id="result_text">{{result}}</p>
@@ -72,14 +96,32 @@
     </body>
 
     <script>
-        // onchange event to trigger
+        function loader() {
+            var filename = document.getElementById("file").innerHTML;
+
+            if (filename != "") {
+                // console.log(filename);
+                document.getElementById("loader").style.display = "block";
+            }
+        }
+
+        // Onchange event to trigger
         function getFileData(myFile) {
             var file = myFile.files[0];
             var filename = file.name;
             // console.log(file.name);
 
-            document.getElementById("file_name").innerHTML = filename;
+            document.getElementById("file_container").style.display = "flex";
+            document.getElementById("file").innerHTML = filename;
+
+            document.getElementById("result").style.display = "none";
             // console.log(document.getElementById("id_input_file").value.split("\\").pop());
+        }
+
+        function remove() {
+            document.getElementById("id_input_file").value = null;
+            document.getElementById("file").innerHTML = "";
+            document.getElementById("file_container").style.display = "none";
         }
 
         function copy_text() {
