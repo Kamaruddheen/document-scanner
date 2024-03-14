@@ -41,14 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'livereload',  # livereload for development purpose only
     'django.contrib.staticfiles',
-    'crispy_forms',
-    "crispy_bootstrap5",
     'data_extraction',
 ]
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
-CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

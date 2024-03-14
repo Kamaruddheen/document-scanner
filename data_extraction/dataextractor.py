@@ -73,9 +73,9 @@ def find_text_with_ocr(image, x, y, xw, yh):
     # print(ocr_result)
 
     # Split text into lines
-    ocr_result = ocr_result.split("\n")
+    ocr_arr_result = ocr_result.split("\n")
 
-    for i, item in enumerate(ocr_result):        
+    for item in ocr_arr_result:        
         results.append(item)
 
     return results, ocr_result

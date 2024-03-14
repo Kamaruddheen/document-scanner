@@ -1,3 +1,137 @@
 body {
-    background-color: #ade8f4;
+    background-color: #00e6ac;
+    font-family: "Madimi One", sans-serif; 
+    font-weight: 400;
+    font-style: normal;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    height: 100% !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+form {    
+    display: flex;
+    flex-direction: column;
+    width: 66.66666667%;
+}
+
+.vh-100 {
+    height: 98vh !important;
+}
+
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 1.5rem;
+    cursor: pointer;
+    border: 2px dashed #01b16d;
+    background-color: aquamarine;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
+}
+  
+.file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.file-upload .icon svg {
+    height: 80px;
+    fill: #006941;
+}
+  
+.file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.file-upload .text span {
+    font-weight: 400;
+    color: #006941;
+    letter-spacing: 1.5px;
+    font-weight: 900;
+}
+  
+.file-upload input {
+    display: none;
+}
+
+.submit-button {    
+    font-family: "Madimi One", sans-serif; 
+    margin: 1rem 0.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 2px solid #006941;
+    background-color: rgb(193, 250, 231);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
+
+.submit-button:hover {
+    letter-spacing: 3px;
+    background-color: #018351;
+    color: rgb(157, 253, 221);
+    box-shadow: #006941 0px 7px 29px 0px;
+}
+
+.re-upload {
+    color: red !important;
+}
+
+.result {
+    border: 2px solid #006941;    
+    border-radius: 2.4rem;
+    background-color: aquamarine;
+}
+
+.result p {
+    font-family: "Montserrat", "Madimi One", sans-serif;
+    font-weight: 600;    
+    padding: 2rem 1.4rem 1.5rem;
+    margin: 10px 0 0 0;
+    user-select: none;
+}
+
+.copy-text {
+    display: flex;
+    position: relative;
+    float: right;
+    background-color: transparent;
+    border: 0;    
+    margin-right: 3%;
+    margin-top: 1%;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 70%;
+    padding: 5px;
+    transition: var(--all-transition);
+}
+
+.copy-text:hover {    
+    background-color: #01e28c;
+    color: aliceblue;
+    transform: scale(1.2);
+}
+
+.copy-text:active {
+    transform: scale(1.1);
+}
+
+.file_name {
+    font-family: "Montserrat", "Madimi One", sans-serif;
+    font-weight: 800;    
 }
